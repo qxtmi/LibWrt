@@ -8,12 +8,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@main
       - name: Build OpenWrt
-        uses: laipeng668/openwrt-ci-roc@main
+        uses: breeze303/openwrt-ci@main
         with:
           REPO_URL: https://github.com/LiBwrt/LibWrt
           REPO_BRANCH: 25.12-nss
           TARGET: ipq807x
           SUBTARGET: generic
           PROFILE: alibaba_ap8220
-          # 下面开启SSH，编译中途可以连进去menuconfig勾选插件，新手神器
           SSH: true
