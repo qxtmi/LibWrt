@@ -1,18 +1,19 @@
 name: Build LibWrt AP8220
 on:
   workflow_dispatch:
+
 jobs:
   build:
     runs-on: ubuntu-22.04
     steps:
-      - name: Checkout
-        uses: actions/checkout@main
-      - name: Build OpenWrt
-        uses: breeze303/openwrt-ci@main
-        with:
+      - name: 拉取P3TERX编译脚本
+        uses: P3TERX/Actions-OpenWrt@main
+        env:
           REPO_URL: https://github.com/LiBwrt/LibWrt
           REPO_BRANCH: 25.12-nss
-          TARGET: ipq807x
-          SUBTARGET: generic
-          PROFILE: alibaba_ap8220
-          SSH: true
+          FEEDS_CONF: feeds.conf.default
+          CONFIG_FILE: .config
+          DIY_P1_SH: diy-part1.sh
+          DIY_P2_SH: diy-part2.sh
+          SSH_ACTIONS: true
+          UPLOAD_FIRMWARE: true
